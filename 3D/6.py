@@ -3,6 +3,7 @@ def reverse_recursion(s):
         return s
     else:
         return reverse_recursion(s[1:])+s[0]
+        
 
 input_str = "INE-KMUTNB"
 if __name__ == "__main__":
