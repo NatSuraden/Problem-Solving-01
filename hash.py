@@ -1,7 +1,5 @@
 namelist = ["","","","","","","","","",""]
 datarun = "Y"
-doit = "Y"
-doit2= "Y"
 def get_in_the_list(keys,val,num):
     global namelist
     Data = {keys:val}
@@ -27,6 +25,7 @@ while datarun == "Y":
     print("3.EXIT")
     enter = input("Enter number(1,2 or 3): ")
     if enter == "1":
+        doit = "Y"
         while doit == "Y":
             if "" not in namelist:
                 print("FULL LIST SORRY T-T")
@@ -34,14 +33,12 @@ while datarun == "Y":
             keys = input("Enter your name :")
             val = input("number ID :")
             num = nathash(keys)
-            #print(get_in_the_list(keys,val,num))
+            get_in_the_list(keys,val,num)
             doit = input("want more(Y = Yes,N = No)")
     elif enter == '2':
+        doit2= "Y"
         while doit2 == 'Y':
             keys = input('Enter your name :')
-            if keys not in namelist:
-                print("NOT IN THE LIST SORRY")
-                doit2 = 'Y'
             num = nathash(keys)
             if keys in namelist[num]:
                 print("This is your ID:",namelist[num].get(keys))
@@ -50,7 +47,7 @@ while datarun == "Y":
                     if keys in i:
                         print("This is your ID",i.get(keys))
                         break
-            doit2 = input("want more(Y = Yes,N = No)")
+            doit2 = input("want more(Y = Yes,N = No): ")
     else:
         datarun = "N"
         
