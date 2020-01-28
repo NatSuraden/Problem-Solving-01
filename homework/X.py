@@ -24,13 +24,14 @@ def bogosort(nums):
 
 def timeitbogo():
     SETUP_CODE = ''' 
+import random
 from __main__ import bogosort
+nums = [6, 3, 5, 7, 2, 10, 9, 4, 1, 8]
 '''
     TEST_CODE = ''' 
-nums = [6, 3, 5, 7, 2, 10, 9, 4, 1, 8]
 bogosort(nums)
 '''
-    times = timeit.repeat(setup=SETUP_CODE,stmt=TEST_CODE,repeat=5,number=100000)
+    times = timeit.repeat(setup=SETUP_CODE,stmt=TEST_CODE,repeat=5,number=100)
     #print(times)
     print('bogo time: {} '.format(min(times)))
 
