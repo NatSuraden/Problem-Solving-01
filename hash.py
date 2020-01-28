@@ -12,7 +12,7 @@ def get_in_the_list(keys,val,num):
             count+= 1
             if i == "":
                 namelist[count] = Data
-            
+                break     
     return namelist
 def nathash():
     global namelist
