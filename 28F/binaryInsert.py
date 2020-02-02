@@ -56,39 +56,33 @@ class Node:
             res = res+self.PostorderTrraversal(root.right)
             res.append(root.data)
         return res
-    def deleltion(self,num):
-        if num < self.data:
-            if self.left is None:
-                return str(num)+"Not Found"
-            elif self.right.data == num:
-                self.right = None
-                return True
-            elif self.left.data == num:
-                self.left = None
-                return True
-            return self.left.deleltion(num)
-        elif num > self.data:
-            #x = self.right
-            #print(x)
-            #print("X")
-            #print(self.right.data)
-            if self.right is None:
-                return str(num)+"Not Found"
-            #else:
-                #self.right = None
-                #return True
-            elif  self.right.data == num:
-                self.right = None
-                #print(self.right.data)
-                return True
-            elif self.left.data == num:
-                self.left = None
-                return True
-            return self.right.deleltion(num)
+    def goinNode(self, node):
+        deepgo = node
+        while(deepgo.left is not None):
+            deepgo = deepgo.left
+        return deepgo
+    def delete(self, data):
+        if self is None:
+            return None 
+        if data < self.data:
+            self.left = self.left.delete(data)
+        elif data > self.data:
+            self.right = self.right.delete(data)
         else:
-            if self.left is None and self.right is None:
-                pass
-            
+            if self.left is None:
+                dataX = self.right
+                self = None
+                return dataX
+            elif self.right is None:
+                dataX = self.left
+                self = None
+                print(dataX)
+                return dataX
+            dataX = self.goinNode(self.right)
+            self.data = dataX.data
+            self.right = self.right.delete(dataX.data)
+
+        return self
     
 root = Node(100)
 root.insert(50)
@@ -96,7 +90,7 @@ root.insert(60)
 root.insert(30)
 root.insert(150)
 root.insert(120)
-root.deleltion(120)
+root.delete(150)
 print(root.inorderTraversal(root))
 #print(root.PreorderTraversal(root))
 #print(root.PostorderTrraversal(root))
